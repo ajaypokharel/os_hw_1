@@ -19,7 +19,6 @@ def producer(sl, size):
             print(".", end="")
             sleep(0.01)
 
-        print()
         sl[sl[-1]] = item
         sl[-1] += 1 # last element acts as a counter
         if sl[-1] == size:  # if counter == bufferSize; do nothing
