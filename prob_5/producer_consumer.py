@@ -46,7 +46,7 @@ if __name__=="__main__":
     size = 5
 
     with SharedMemoryManager() as smm:
-        sl = smm.ShareableList([0]*(size+2))
+        sl = smm.ShareableList([0]*(size+2))    # extra two space to store counters
         p = Process(target=producer, args=(sl, size))
         c = Process(target=consumer, args=(sl, size))
         p.start()
