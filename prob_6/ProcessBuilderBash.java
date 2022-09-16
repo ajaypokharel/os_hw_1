@@ -48,6 +48,12 @@ public class ProcessBuilderBash {
 
     public static void cdProcess (String[] command) throws IOException, InterruptedException {
 
+        /* cd does not change directory because the File path sent in pb.directory(file)
+            line does not produce actual path for cd to execute. I tried debugging and researching
+            but could not find a way to resolve... an interesting problem
+            This comment on StackOverflow clarifies: https://stackoverflow.com/a/4884715
+        */
+
         String directory = System.getProperty("user.dir");
         ProcessBuilder pb = new ProcessBuilder(directory);
         File file = new File(directory);
