@@ -27,13 +27,23 @@ class Server {
                 String str, str1;
 
                 // read from User
-                while (!(str1 = inp.readLine()).equals("FINISH")) {
-                    
-                    str = client_data.readLine();
-                    System.out.println(str);
+                while (true) {
 
+                    str1 = inp.readLine();
+                    if (str1.equals("FINISH")){
+                        System.out.println("Server Closed");
+                        break;
+                    }
                     // send to client
                     dos.writeBytes(str1 + "\n");
+
+                    str = client_data.readLine();
+                    if (str.equals("FINISH")){
+                        System.out.println(str);
+                        break;
+                    }
+                    System.out.println("Client Says: " + str);
+
                 }
 
                 // close connection

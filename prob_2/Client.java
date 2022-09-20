@@ -21,17 +21,22 @@ class Client {
             
             String str, str1;
 
-            // repeat as long as exit
-            // is not typed at client
-            while (!(str = inp.readLine()).equals("FINISH")) {
+            while (true) {
 
+                str = inp.readLine();
+
+                if (str.equals("FINISH")) {
+                    dos.writeBytes("Client closed the connection");
+                    System.out.println("Connection Ended");
+                    break;
+                }
                 // send to the server
                 dos.writeBytes(str + "\n");
 
                 // receive from the server
                 str1 = server_data.readLine();
 
-                System.out.println(str1);
+                System.out.println("Server says: " + str1);
             }
 
             // close connection.
