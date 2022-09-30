@@ -29,6 +29,14 @@ class Server {
                 // read from User
                 while (true) {
 
+                    str = client_data.readLine();
+                    if (str.equals("FINISH")){
+                        System.out.println(str);
+                        break;
+                    }
+
+                    System.out.println("Client Says: " + str);
+
                     str1 = inp.readLine();
                     if (str1.equals("FINISH")){
                         System.out.println("Server Closed");
@@ -36,14 +44,6 @@ class Server {
                     }
                     // send to client
                     dos.writeBytes(str1 + "\n");
-
-                    str = client_data.readLine();
-                    if (str.equals("FINISH")){
-                        System.out.println(str);
-                        break;
-                    }
-                    System.out.println("Client Says: " + str);
-
                 }
 
                 // close connection
